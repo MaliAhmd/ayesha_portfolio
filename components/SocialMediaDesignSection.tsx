@@ -14,6 +14,7 @@ export default function SocialMediaDesignSection() {
   const [modalImageIdx, setModalImageIdx] = useState<number>(0);
   const [cabinetIdx, setCabinetIdx] = useState<number>(0);
   const [movieIdx, setMovieIdx] = useState<number>(0);
+  const [collabIdx, setCollabIdx] = useState<number>(0);
 
   const cabinetImages = [
     "/Cabinet/0.jpeg",
@@ -28,6 +29,11 @@ export default function SocialMediaDesignSection() {
   const movieImages = [
     "/movie/1.jpeg",
     "/movie/2.jpeg",
+  ];
+
+  const collabImages = [
+    "/collab/1.jpeg",
+    "/collab/2.jpeg",
   ];
 
   // Auto-swipe Cabinet images every 2 seconds
@@ -45,6 +51,14 @@ export default function SocialMediaDesignSection() {
     }, 2000);
     return () => clearInterval(timer);
   }, [movieImages.length]);
+
+  // Auto-swipe Collab images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCollabIdx((prev) => (prev + 1) % collabImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [collabImages.length]);
 
   const orgs = [
     {
@@ -83,17 +97,17 @@ export default function SocialMediaDesignSection() {
           images: cabinetImages,
           isCabinet: true,
         },
-        { title: "Core Team Announcement", subtitle: "Official QMC Core Team Reveal", img: "/QMC/Core Team.jpeg" },
-        { title: "Media Learning Workshop", subtitle: "Interactive Workshop Series", img: "/QMC/Media Learning Workshop.jpeg" },
-        { title: "QAU Media Fest Presents", subtitle: "Annual Media Fest Announcement", img: "/QMC/QAU Medi Fest Presents.jpeg" },
-        { title: "QAU Media Fest Official Poster", subtitle: "Flagship Event Campaign Poster", img: "/QMC/QAU Media Fest.jpeg" },
-        { title: "QMC Media Learning Fest", subtitle: "Skills & Learning Festival", img: "/QMC/QMC Media Learning FEST.jpeg" },
-        { title: "Join QMC Recruitment Campaign", subtitle: "Student Recruitment Drive", img: "/QMC/join our QMC.jpeg" },
         {
           title: "Movie Day Event Campaign",
           subtitle: "Campus Movie Day Promotion (2 Photos)",
           images: movieImages,
           isMovie: true,
+        },
+        {
+          title: "Collaboration Campaigns",
+          subtitle: "Brand & Event Collaborations (2 Photos)",
+          images: collabImages,
+          isCollab: true,
         },
       ],
       colorAccent: "from-[#201a18]/20 to-[#ee4b56]/15",
@@ -122,7 +136,7 @@ export default function SocialMediaDesignSection() {
 
   const handleOpenModal = (item: any) => {
     if (item.images && item.images.length > 0) {
-      const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : 0;
+      const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : 0;
       setActiveModalItem({
         title: item.title,
         images: item.images,
@@ -220,7 +234,7 @@ export default function SocialMediaDesignSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentOrg.showcase.map((item: any, idx: number) => {
                 const isMultiImage = Boolean(item.images && item.images.length > 0);
-                const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : 0;
+                const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : 0;
                 const currentDisplayImg = isMultiImage ? item.images[activeIdx] : item.img;
                 const hasImage = Boolean(currentDisplayImg);
 
