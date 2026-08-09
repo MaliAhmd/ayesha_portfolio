@@ -25,14 +25,11 @@ export default function CreativeCollectionSection() {
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#201a18] text-white text-xs font-bold uppercase tracking-widest border border-[#201a18]">
-            Independent Projects
-          </div>
           <h2 className="text-3xl sm:text-5xl font-black text-[#201a18] font-display-vintage">
             CREATIVE <span className="coral-text-vintage inline-block">COLLECTION</span>
           </h2>
           <p className="text-base sm:text-lg text-[#201a18]/80 font-sans leading-relaxed">
-            A curated collection of independent creative work, invitation designs and visual explorations created beyond internships and university organizations.
+            A curated collection of creative work, invitation designs and visual explorations created beyond internships and university organizations.
           </p>
         </div>
 

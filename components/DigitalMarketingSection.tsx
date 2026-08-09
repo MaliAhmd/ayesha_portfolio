@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, CheckCircle2, Building2, Calendar, Wrench, ChevronRight, Layers, Layout, Mail, FileText, Check, ArrowRight } from "lucide-react";
+import { Sparkles, CheckCircle2, Building2, Calendar, Wrench, ChevronRight, Layers, Layout, Mail, FileText, Check, ArrowRight, Film, Play, Image as ImageIcon } from "lucide-react";
 
 export default function DigitalMarketingSection() {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -84,11 +84,12 @@ export default function DigitalMarketingSection() {
   ];
 
   const deliverables = [
-    "Brand Identity",
+    "Brand Naming",
+    "Brand Positioning",
+    "Website Sitemap",
     "Website Content",
-    "Website Structure",
-    "Blog Plan",
-    "Content Calendar",
+    "Blog Content Planning",
+    "30-Day Content Calendar",
     "Email Marketing Workflow",
     "HubSpot CRM Setup",
   ];
@@ -100,11 +101,8 @@ export default function DigitalMarketingSection() {
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#201a18] text-white text-xs font-bold uppercase tracking-widest border border-[#201a18]">
-            Digital Marketing &amp; Internship Work
-          </div>
           <h2 className="text-3xl sm:text-5xl font-black text-[#201a18] font-display-vintage">
-            DIGITAL MARKETING <span className="coral-text-vintage inline-block">EXPERIENCE</span>
+            DIGITAL MARKETING
           </h2>
           <p className="text-base sm:text-lg text-[#201a18]/70 font-sans">
             Hands-on experience in content workflows, brand building, email automation, and digital strategy.
@@ -126,7 +124,7 @@ export default function DigitalMarketingSection() {
               LANTROTECH
             </h3>
             <p className="text-sm text-[#201a18]/80 max-w-2xl">
-              Hands-on experience with digital marketing tools, content workflows and branding projects while collaborating with the marketing team.
+              Hands-on experience with digital marketing tools, content workflows and branding projects collaborating with MarCom &amp; design Team.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -165,44 +163,37 @@ export default function DigitalMarketingSection() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 lg:w-80 shrink-0 space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60">Primary Tools</span>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {["Canva", "Mailchimp", "HubSpot CRM", "ContentPace"].map((tool) => (
-                  <span key={tool} className="px-2.5 py-1 rounded-md bg-white border border-[#201a18]/20 text-xs font-bold text-[#201a18]">
-                    {tool}
-                  </span>
-                ))}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 lg:w-80 shrink-0 space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60 block">Brand Marks</span>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="h-16 bg-white rounded-xl border border-[#201a18]/15 p-2 flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/Logo/logo1.jpeg" alt="Intellectra Logo 1" className="max-h-full max-w-full object-contain" />
+                </div>
+                <div className="h-16 bg-white rounded-xl border border-[#201a18]/15 p-2 flex items-center justify-center shadow-sm overflow-hidden">
+                  <img src="/Logo/logo2.jpeg" alt="Intellectra Logo 2" className="max-h-full max-w-full object-contain" />
+                </div>
+              </div>
+              <div className="border-t border-[#201a18]/10 pt-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#201a18]/60">Primary Tools</span>
+                <div className="flex flex-wrap gap-1 pt-1">
+                  {["Canva", "Mailchimp", "HubSpot CRM", "ContentPace"].map((tool) => (
+                    <span key={tool} className="px-2 py-0.5 rounded bg-white border border-[#201a18]/20 text-[10px] font-bold text-[#201a18]">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Project Overview & Contributions */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Overview */}
-            <div className="lg:col-span-6 space-y-4 p-6 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/10">
-              <h4 className="text-lg font-black text-[#201a18] uppercase tracking-wider font-sans">
-                Project Overview
-              </h4>
-              <p className="text-sm sm:text-base text-[#201a18]/80 leading-relaxed">
-                Developed during my internship at LantroTech, <strong>Intellectra</strong> was a branding project focused on establishing a professional identity and digital presence for an engineering consultancy specializing in estimation and design services.
-              </p>
-            </div>
-
-            {/* Contributions */}
-            <div className="lg:col-span-6 space-y-4 p-6 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/10">
-              <h4 className="text-lg font-black text-[#201a18] uppercase tracking-wider font-sans">
-                My Contributions
-              </h4>
-              <div className="grid grid-cols-2 gap-2">
-                {contributions.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#201a18]">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#ee4b56]" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Project Overview */}
+          <div className="w-full space-y-4 p-6 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/10">
+            <h4 className="text-lg font-black text-[#201a18] uppercase tracking-wider font-sans">
+              Project Overview
+            </h4>
+            <p className="text-sm sm:text-base text-[#201a18]/80 leading-relaxed">
+              Developed during my internship at LantroTech, <strong>Intellectra</strong> was a branding project focused on establishing a professional identity and digital presence for an engineering consultancy specializing in estimation and design services.
+            </p>
           </div>
 
           {/* Deliverables Checklist */}
@@ -277,14 +268,51 @@ export default function DigitalMarketingSection() {
                 
                 {activeTab === 0 && (
                   /* 1. Brand Logo */
-                  <div className="text-center space-y-4">
-                    <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-[#201a18] text-white flex items-center justify-center mx-auto shadow-xl border-4 border-[#ee4b56]">
-                      <span className="text-4xl sm:text-5xl font-black font-display-vintage text-[#ee4b56]">INT</span>
+                  <div className="w-full max-w-2xl space-y-6 text-center py-2">
+                    <div className="flex items-center justify-center gap-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#ee4b56] bg-[#ee4b56]/10 px-3 py-1 rounded-full border border-[#ee4b56]/20">
+                        Official Brand Logos
+                      </span>
                     </div>
-                    <div>
-                      <h4 className="text-3xl font-black tracking-widest font-display-vintage text-[#201a18]">INTELLECTRA</h4>
-                      <p className="text-xs font-bold tracking-widest text-[#ee4b56] uppercase mt-1">ENGINEERING CONSULTANCY</p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-stretch">
+                      {/* Logo 1 */}
+                      <div className="p-4 rounded-2xl bg-[#f7f4ed] border-2 border-[#201a18] shadow-md space-y-3 flex flex-col justify-between transition-transform hover:scale-105">
+                        <div className="h-28 bg-white rounded-xl border border-[#201a18]/15 flex items-center justify-center p-2">
+                          <img src="/Logo/logo1.jpeg" alt="Intellectra Logo 1" className="max-h-full max-w-full object-contain rounded-lg" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-black text-[#201a18] block">Logo Option 1</span>
+                          <span className="text-[10px] font-bold text-[#ee4b56] uppercase">Primary Emblem</span>
+                        </div>
+                      </div>
+
+                      {/* Logo 2 */}
+                      <div className="p-4 rounded-2xl bg-[#f7f4ed] border-2 border-[#201a18] shadow-md space-y-3 flex flex-col justify-between transition-transform hover:scale-105">
+                        <div className="h-28 bg-white rounded-xl border border-[#201a18]/15 flex items-center justify-center p-2">
+                          <img src="/Logo/logo2.jpeg" alt="Intellectra Logo 2" className="max-h-full max-w-full object-contain rounded-lg" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-black text-[#201a18] block">Logo Option 2</span>
+                          <span className="text-[10px] font-bold text-[#ee4b56] uppercase">Primary Wordmark</span>
+                        </div>
+                      </div>
+
+                      {/* Logo 3 */}
+                      <div className="p-4 rounded-2xl bg-[#f7f4ed] border-2 border-[#201a18]/20 shadow-sm space-y-3 flex flex-col justify-between transition-transform hover:scale-105">
+                        <div className="h-28 bg-white rounded-xl border border-[#201a18]/15 flex items-center justify-center p-2">
+                          <img src="/Logo/logo3.jpeg" alt="Intellectra Logo 3" className="max-h-full max-w-full object-contain rounded-lg" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-[#201a18] block">Logo Option 3</span>
+                          <span className="text-[10px] text-[#201a18]/60 uppercase">Alternate Mark</span>
+                        </div>
+                      </div>
                     </div>
+
+                    <p className="text-xs text-[#201a18]/70 italic font-sans">
+                      Official brand identity marks created for Intellectra Engineering Consultancy.
+                    </p>
                   </div>
                 )}
 
@@ -484,18 +512,41 @@ export default function DigitalMarketingSection() {
 
           </div>
 
+          {/* INTELLECTRA PROMO REEL SHOWCASE */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-[#201a18] text-white border-2 border-[#201a18] shadow-2xl space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
+              <div className="space-y-1">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ee4b56] text-white text-xs font-bold uppercase tracking-wider">
+                  <Film className="w-3.5 h-3.5" /> Featured Video Reel
+                </span>
+                <h4 className="text-xl sm:text-2xl font-black font-display-vintage text-white">
+                  INTELLECTRA PROMO REEL
+                </h4>
+                <p className="text-xs text-white/70">
+                  Short promotional video reel created to showcase Intellectra brand identity and digital presence.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="w-full max-w-3xl rounded-2xl overflow-hidden border-2 border-[#ee4b56] shadow-2xl bg-black relative">
+                <video
+                  src="/reel/short_reel.mp4"
+                  controls
+                  controlsList="nodownload"
+                  playsInline
+                  className="w-full max-h-[460px] object-contain mx-auto"
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* INTERNSHIP EXPOSURE & TOOLBOX EXPOSURE */}
+        {/* TOOLS & PLATFORMS */}
         <div className="rounded-3xl p-8 bg-white border-2 border-[#201a18] shadow-card-hover space-y-6">
-          <h3 className="text-xl sm:text-2xl font-black text-[#201a18] font-display-vintage">
-            Internship Exposure &amp; Hands-on Toolkit
-          </h3>
-          <p className="text-xs sm:text-sm text-[#201a18]/75">
-            During my internship at LantroTech, I also gained practical exposure to industry-leading marketing tools and platforms:
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Worked With */}
             <div className="p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-[#ee4b56]">

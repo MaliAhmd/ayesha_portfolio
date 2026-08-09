@@ -49,12 +49,6 @@ export default function HeroSection() {
               PORTFOLIO
             </h1>
           </div>
-
-          <div className="mt-6 pt-4 border-t border-[#201a18]/10 max-w-lg mx-auto">
-            <p className="text-base sm:text-xl text-[#201a18] font-serif-vintage italic tracking-wide font-medium">
-              Social Media Manager &amp; Graphics Designer
-            </p>
-          </div>
         </div>
 
         {/* Featured Tagline Slogan */}
@@ -63,48 +57,6 @@ export default function HeroSection() {
             &ldquo;Where creativity meets strategy.&rdquo;
           </p>
           <div className="w-16 h-0.5 bg-[#ee4b56] mx-auto mt-3 rounded-full" />
-        </div>
-
-        {/* Hero Work Collage Preview Card */}
-        <div className="mb-10 max-w-3xl mx-auto rounded-2xl p-4 bg-white/80 border-2 border-[#201a18] shadow-lg hover:border-[#ee4b56] transition-all duration-300 text-left">
-          <div className="flex items-center justify-between border-b border-[#201a18]/10 pb-2 mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#ee4b56] flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" /> Featured Creative Collage
-            </span>
-            <span className="text-[11px] font-semibold text-[#201a18]/60 uppercase">Branding • Social • Digital Marketing</span>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3">
-            <div className="h-28 sm:h-36 rounded-xl bg-gradient-to-br from-[#ee4b56] to-[#d32f3a] p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden group hover:scale-[1.03] transition-transform duration-300 cursor-pointer">
-              <span className="text-[10px] font-bold tracking-widest uppercase bg-black/20 px-2 py-0.5 rounded backdrop-blur-sm self-start">
-                BRANDING
-              </span>
-              <div>
-                <p className="text-xs sm:text-sm font-black font-display-vintage">INTELLECTRA</p>
-                <p className="text-[10px] text-white/80">Identity &amp; Sitemap</p>
-              </div>
-            </div>
-
-            <div className="h-28 sm:h-36 rounded-xl bg-[#201a18] hover:bg-[#ee4b56] p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden group hover:scale-[1.03] transition-all duration-300 cursor-pointer">
-              <span className="text-[10px] font-bold tracking-widest uppercase bg-white/10 px-2 py-0.5 rounded backdrop-blur-sm self-start text-[#ee4b56] group-hover:text-white">
-                EVENTS
-              </span>
-              <div>
-                <p className="text-xs sm:text-sm font-black font-display-vintage">TEDxQAU</p>
-                <p className="text-[10px] text-white/80">Executive Design</p>
-              </div>
-            </div>
-
-            <div className="h-28 sm:h-36 rounded-xl bg-gradient-to-br from-[#f7f4ed] to-white border border-[#201a18]/20 hover:border-[#ee4b56] p-3 text-[#201a18] flex flex-col justify-between shadow-sm relative overflow-hidden group hover:scale-[1.03] transition-all duration-300 cursor-pointer">
-              <span className="text-[10px] font-bold tracking-widest uppercase bg-[#ee4b56]/10 text-[#ee4b56] px-2 py-0.5 rounded self-start">
-                CAMPAIGNS
-              </span>
-              <div>
-                <p className="text-xs sm:text-sm font-black font-display-vintage group-hover:text-[#ee4b56] transition-colors">QUAIDIAN &amp; HOPE</p>
-                <p className="text-[10px] text-[#201a18]/70">Social Media</p>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Action Buttons */}
@@ -142,3 +94,4 @@ export default function HeroSection() {
     </section>
   );
 }
+

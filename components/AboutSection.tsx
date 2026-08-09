@@ -74,11 +74,11 @@ export default function AboutSection() {
                 <div className="space-y-2 text-xs font-semibold text-[#201a18]/70">
                   <div className="flex justify-between py-1.5 border-b border-[#201a18]/10">
                     <span>Education:</span>
-                    <span className="font-bold text-[#201a18]">Marketing Graduate</span>
+                    <span className="font-bold text-[#201a18]">Bachelors of Business Administration</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-[#201a18]/10">
                     <span>Specialization:</span>
-                    <span className="font-bold text-[#201a18]">Branding &amp; Social Media</span>
+                    <span className="font-bold text-[#201a18]">Marketing</span>
                   </div>
                   <div className="flex justify-between py-1.5">
                     <span>Focus:</span>
@@ -94,10 +94,6 @@ export default function AboutSection() {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ee4b56]/10 text-[#ee4b56] text-xs font-bold uppercase tracking-widest border border-[#ee4b56]/20">
               About Ayesha
             </div>
-
-            <h2 className="text-3xl sm:text-5xl font-black text-[#201a18] font-display-vintage leading-tight">
-              Marketing is Where <span className="coral-text-vintage inline-block">Strategy Meets Creativity</span>
-            </h2>
 
             <p className="text-base sm:text-lg text-[#201a18]/85 leading-relaxed font-sans font-medium">
               I'm <strong className="text-[#201a18] font-bold">Ayesha Arshad Khan</strong>, a Marketing graduate passionate about building brands, creating meaningful content and exploring the intersection of creativity and digital marketing.

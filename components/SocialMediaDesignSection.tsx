@@ -120,10 +120,7 @@ export default function SocialMediaDesignSection() {
                 {currentOrg.name}
               </h3>
               <p className="text-sm font-bold text-[#ee4b56] uppercase tracking-wide">
-                Role: {currentOrg.role}
-              </p>
-              <p className="text-sm text-[#201a18]/80 max-w-xl leading-relaxed">
-                {currentOrg.desc}
+                {currentOrg.role}
               </p>
             </div>
 
