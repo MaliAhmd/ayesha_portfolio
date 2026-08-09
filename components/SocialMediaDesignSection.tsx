@@ -15,6 +15,7 @@ export default function SocialMediaDesignSection() {
   const [cabinetIdx, setCabinetIdx] = useState<number>(0);
   const [movieIdx, setMovieIdx] = useState<number>(0);
   const [collabIdx, setCollabIdx] = useState<number>(0);
+  const [certIdx, setCertIdx] = useState<number>(0);
 
   const cabinetImages = [
     "/Cabinet/0.jpeg",
@@ -34,6 +35,15 @@ export default function SocialMediaDesignSection() {
   const collabImages = [
     "/collab/1.jpeg",
     "/collab/2.jpeg",
+  ];
+
+  const certImages = [
+    "/certificates/WhatsApp Image 2026-08-09 at 12.06.32 PM (1).jpeg",
+    "/certificates/WhatsApp Image 2026-08-09 at 12.06.32 PM.jpeg",
+    "/certificates/WhatsApp Image 2026-08-09 at 12.06.33 PM (1).jpeg",
+    "/certificates/WhatsApp Image 2026-08-09 at 12.06.33 PM.jpeg",
+    "/certificates/WhatsApp Image 2026-08-09 at 12.06.34 PM (1).jpeg",
+    "/certificates/WhatsApp Image 2026-08-09 at 12.06.34 PM.jpeg",
   ];
 
   // Auto-swipe Cabinet images every 2 seconds
@@ -59,6 +69,14 @@ export default function SocialMediaDesignSection() {
     }, 2000);
     return () => clearInterval(timer);
   }, [collabImages.length]);
+
+  // Auto-swipe Certificates every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCertIdx((prev) => (prev + 1) % certImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [certImages.length]);
 
   const orgs = [
     {
@@ -109,6 +127,18 @@ export default function SocialMediaDesignSection() {
           images: collabImages,
           isCollab: true,
         },
+        {
+          title: "Certificates & Recognitions",
+          subtitle: "QMC Certificates of Appreciation (6 Photos)",
+          images: certImages,
+          isCert: true,
+        },
+        { title: "Core Team Announcement", subtitle: "Official QMC Core Team Reveal", img: "/QMC/Core Team.jpeg" },
+        { title: "Media Learning Workshop", subtitle: "Interactive Workshop Series", img: "/QMC/Media Learning Workshop.jpeg" },
+        { title: "QAU Media Fest Presents", subtitle: "Annual Media Fest Announcement", img: "/QMC/QAU Medi Fest Presents.jpeg" },
+        { title: "QAU Media Fest Official Poster", subtitle: "Flagship Event Campaign Poster", img: "/QMC/QAU Media Fest.jpeg" },
+        { title: "QMC Media Learning Fest", subtitle: "Skills & Learning Festival", img: "/QMC/QMC Media Learning FEST.jpeg" },
+        { title: "Join QMC Recruitment Campaign", subtitle: "Student Recruitment Drive", img: "/QMC/join our QMC.jpeg" },
       ],
       colorAccent: "from-[#201a18]/20 to-[#ee4b56]/15",
     },
@@ -136,7 +166,7 @@ export default function SocialMediaDesignSection() {
 
   const handleOpenModal = (item: any) => {
     if (item.images && item.images.length > 0) {
-      const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : 0;
+      const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : item.isCert ? certIdx : 0;
       setActiveModalItem({
         title: item.title,
         images: item.images,
@@ -234,7 +264,7 @@ export default function SocialMediaDesignSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentOrg.showcase.map((item: any, idx: number) => {
                 const isMultiImage = Boolean(item.images && item.images.length > 0);
-                const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : 0;
+                const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : item.isCert ? certIdx : 0;
                 const currentDisplayImg = isMultiImage ? item.images[activeIdx] : item.img;
                 const hasImage = Boolean(currentDisplayImg);
 
