@@ -38,12 +38,13 @@ export default function SocialMediaDesignSection() {
   ];
 
   const certImages = [
-    "/certificates/WhatsApp Image 2026-08-09 at 12.06.32 PM (1).jpeg",
-    "/certificates/WhatsApp Image 2026-08-09 at 12.06.32 PM.jpeg",
-    "/certificates/WhatsApp Image 2026-08-09 at 12.06.33 PM (1).jpeg",
-    "/certificates/WhatsApp Image 2026-08-09 at 12.06.33 PM.jpeg",
-    "/certificates/WhatsApp Image 2026-08-09 at 12.06.34 PM (1).jpeg",
-    "/certificates/WhatsApp Image 2026-08-09 at 12.06.34 PM.jpeg",
+    "/certificates/1.jpeg",
+    "/certificates/2.jpeg",
+    "/certificates/3.jpeg",
+    "/certificates/4.jpeg",
+    "/certificates/5.jpeg",
+    "/certificates/6.jpeg",
+
   ];
 
   // Auto-swipe Cabinet images every 2 seconds
@@ -186,7 +187,7 @@ export default function SocialMediaDesignSection() {
   return (
     <section id="social-media" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#f6f3eb] relative overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
-        
+
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ee4b56] text-white text-xs font-bold uppercase tracking-widest border border-[#201a18]">
@@ -206,11 +207,10 @@ export default function SocialMediaDesignSection() {
             <button
               key={org.id}
               onClick={() => setSelectedOrg(org.id)}
-              className={`px-6 py-3 rounded-full text-xs sm:text-sm font-bold transition-all border-2 flex items-center gap-2 ${
-                selectedOrg === org.id
+              className={`px-6 py-3 rounded-full text-xs sm:text-sm font-bold transition-all border-2 flex items-center gap-2 ${selectedOrg === org.id
                   ? "bg-[#201a18] text-white border-[#201a18] shadow-lg scale-105"
                   : "bg-white text-[#201a18] border-[#201a18]/15 hover:border-[#201a18]"
-              }`}
+                }`}
             >
               <span>{org.name}</span>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#ee4b56] text-white font-semibold">
@@ -222,7 +222,7 @@ export default function SocialMediaDesignSection() {
 
         {/* ACTIVE ORGANIZATION FEATURE CARD */}
         <div className="rounded-3xl bg-white border-2 border-[#201a18] shadow-2xl p-5 sm:p-8 lg:p-12 space-y-8 sm:space-y-10">
-          
+
           {/* Header Row */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b-2 border-[#201a18]/10 pb-8">
             <div className="space-y-3">
@@ -272,13 +272,12 @@ export default function SocialMediaDesignSection() {
                   <div
                     key={idx}
                     onClick={() => hasImage && handleOpenModal(item)}
-                    className={`group rounded-2xl bg-[#f7f4ed] border-2 border-[#201a18] shadow-card-hover overflow-hidden transition-all duration-300 flex flex-col justify-between ${
-                      hasImage ? "cursor-pointer hover:border-[#ee4b56]" : ""
-                    }`}
+                    className={`group rounded-2xl bg-[#f7f4ed] border-2 border-[#201a18] shadow-card-hover overflow-hidden transition-all duration-300 flex flex-col justify-between ${hasImage ? "cursor-pointer hover:border-[#ee4b56]" : ""
+                      }`}
                   >
                     {/* Mockup Preview Area */}
                     <div className={`h-64 sm:h-72 p-4 bg-gradient-to-br ${currentOrg.colorAccent} border-b-2 border-[#201a18] flex flex-col justify-between relative overflow-hidden`}>
-                      
+
                       <div className="flex items-center justify-between z-10">
                         <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/90 text-[#201a18] border border-[#201a18]/20 backdrop-blur-sm">
                           {currentOrg.name}
@@ -311,9 +310,8 @@ export default function SocialMediaDesignSection() {
                             {item.images.map((_: any, i: number) => (
                               <span
                                 key={i}
-                                className={`w-1.5 h-1.5 rounded-full transition-all ${
-                                  activeIdx === i ? "bg-[#ee4b56] w-3" : "bg-white/60"
-                                }`}
+                                className={`w-1.5 h-1.5 rounded-full transition-all ${activeIdx === i ? "bg-[#ee4b56] w-3" : "bg-white/60"
+                                  }`}
                               />
                             ))}
                           </div>
@@ -356,7 +354,7 @@ export default function SocialMediaDesignSection() {
       {activeModalItem && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200">
           <div className="relative max-w-4xl w-full bg-white rounded-3xl border-4 border-[#201a18] shadow-2xl p-4 sm:p-6 space-y-4">
-            
+
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b-2 border-[#201a18]/10 pb-3">
               <div>
@@ -382,7 +380,7 @@ export default function SocialMediaDesignSection() {
 
             {/* Modal Image View & Arrow Navigation */}
             <div className="relative rounded-2xl overflow-hidden border-2 border-[#201a18] bg-[#f7f4ed] p-2 flex items-center justify-center min-h-[50vh] max-h-[75vh]">
-              
+
               {/* Left Arrow Button */}
               {activeModalItem.images && activeModalItem.images.length > 1 && (
                 <button
@@ -419,9 +417,8 @@ export default function SocialMediaDesignSection() {
                   <button
                     key={i}
                     onClick={() => setModalImageIdx(i)}
-                    className={`w-3 h-3 rounded-full transition-all border border-[#201a18] ${
-                      modalImageIdx === i ? "bg-[#ee4b56] scale-125" : "bg-[#201a18]/20 hover:bg-[#201a18]/50"
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all border border-[#201a18] ${modalImageIdx === i ? "bg-[#ee4b56] scale-125" : "bg-[#201a18]/20 hover:bg-[#201a18]/50"
+                      }`}
                   />
                 ))}
               </div>
