@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Send, CheckCircle2, Sparkles, Globe, Download, FileText } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, Sparkles, Globe, Download, FileText, Presentation, ExternalLink } from "lucide-react";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -87,12 +87,18 @@ export default function ContactSection() {
 
               <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#201a18] text-white flex items-center justify-center shrink-0">
-                  <Globe className="w-6 h-6 text-[#ee4b56]" />
+                  <Presentation className="w-6 h-6 text-[#ee4b56]" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60">Portfolio Link</p>
-                  <a href="#hero" className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors break-all sm:break-normal block">
-                    ayesha-marketing-portfolio.com
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60">Intellectra Presentation Slides</p>
+                  <a
+                    href="https://drive.google.com/drive/folders/1jPi585-W7vMLbWJwRdNZyGRYHynKLZJx?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors break-all sm:break-normal flex items-center gap-1"
+                  >
+                    <span>View Slides (Google Drive)</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>

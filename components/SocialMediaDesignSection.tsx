@@ -1,10 +1,50 @@
 "use client";
 
-import { useState } from "react";
-import { Sparkles, Palette, Camera, Heart, Layers, ArrowRight, Layout, Trophy } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function SocialMediaDesignSection() {
   const [selectedOrg, setSelectedOrg] = useState<string>("tedx");
+  const [activeModalItem, setActiveModalItem] = useState<{
+    title: string;
+    images?: string[];
+    img?: string;
+    org: string;
+  } | null>(null);
+  const [modalImageIdx, setModalImageIdx] = useState<number>(0);
+  const [cabinetIdx, setCabinetIdx] = useState<number>(0);
+  const [movieIdx, setMovieIdx] = useState<number>(0);
+
+  const cabinetImages = [
+    "/Cabinet/0.jpeg",
+    "/Cabinet/1.jpeg",
+    "/Cabinet/2.jpeg",
+    "/Cabinet/3.jpeg",
+    "/Cabinet/4.jpeg",
+    "/Cabinet/5.jpeg",
+    "/Cabinet/6.jpeg",
+  ];
+
+  const movieImages = [
+    "/movie/1.jpeg",
+    "/movie/2.jpeg",
+  ];
+
+  // Auto-swipe Cabinet images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCabinetIdx((prev) => (prev + 1) % cabinetImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [cabinetImages.length]);
+
+  // Auto-swipe Movie images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMovieIdx((prev) => (prev + 1) % movieImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [movieImages.length]);
 
   const orgs = [
     {
@@ -17,13 +57,13 @@ export default function SocialMediaDesignSection() {
       deliverables: ["Event Branding", "Social Media Posts", "Event Promotions", "Digital Creatives"],
       tools: ["Canva"],
       showcase: [
-        "Instagram Feed Designs",
-        "Instagram Stories",
-        "Event Posters",
-        "Speaker Announcements",
-        "Event Day Creatives",
-        "Event Photography with Designed Assets",
-        "Certificate of Appreciation",
+        { title: "Instagram Feed Designs", subtitle: "Event Feed Aesthetics" },
+        { title: "Instagram Stories", subtitle: "Speaker Teasers & Highlights" },
+        { title: "Event Posters", subtitle: "Official Promotional Posters" },
+        { title: "Speaker Announcements", subtitle: "Speaker Profile Creatives" },
+        { title: "Event Day Creatives", subtitle: "On-site Digital Collateral" },
+        { title: "Event Photography with Designed Assets", subtitle: "Event Photography & Overlays" },
+        { title: "Certificate of Appreciation", subtitle: "Official TEDx Certificate • High Res", img: "/images/certificate_image.jpeg" },
       ],
       colorAccent: "from-[#ee4b56]/20 to-[#201a18]/10",
     },
@@ -37,14 +77,24 @@ export default function SocialMediaDesignSection() {
       deliverables: ["Creative Direction", "Event Branding", "Social Media Campaigns", "Promotional Graphics", "Campaign Visuals"],
       tools: ["Canva"],
       showcase: [
-        "Movie Day Campaign",
-        "Photowalk Campaign",
-        "Event Posters",
-        "Instagram Posts",
-        "Carousel Designs",
-        "Stories",
-        "Branding Assets",
-        "Creative Campaigns",
+        {
+          title: "QMC Core Cabinet 2024-2025",
+          subtitle: "Official Cabinet Reveal (7 Photos)",
+          images: cabinetImages,
+          isCabinet: true,
+        },
+        { title: "Core Team Announcement", subtitle: "Official QMC Core Team Reveal", img: "/QMC/Core Team.jpeg" },
+        { title: "Media Learning Workshop", subtitle: "Interactive Workshop Series", img: "/QMC/Media Learning Workshop.jpeg" },
+        { title: "QAU Media Fest Presents", subtitle: "Annual Media Fest Announcement", img: "/QMC/QAU Medi Fest Presents.jpeg" },
+        { title: "QAU Media Fest Official Poster", subtitle: "Flagship Event Campaign Poster", img: "/QMC/QAU Media Fest.jpeg" },
+        { title: "QMC Media Learning Fest", subtitle: "Skills & Learning Festival", img: "/QMC/QMC Media Learning FEST.jpeg" },
+        { title: "Join QMC Recruitment Campaign", subtitle: "Student Recruitment Drive", img: "/QMC/join our QMC.jpeg" },
+        {
+          title: "Movie Day Event Campaign",
+          subtitle: "Campus Movie Day Promotion (2 Photos)",
+          images: movieImages,
+          isMovie: true,
+        },
       ],
       colorAccent: "from-[#201a18]/20 to-[#ee4b56]/15",
     },
@@ -58,17 +108,36 @@ export default function SocialMediaDesignSection() {
       deliverables: ["Awareness Campaigns", "Event Promotions", "Social Media Graphics", "Digital Creatives"],
       tools: ["Canva"],
       showcase: [
-        "Campaign Posters",
-        "Social Media Posts",
-        "Event Graphics",
-        "Awareness Campaigns",
-        "Volunteer Drive Designs",
+        { title: "Campaign Posters", subtitle: "Social Cause Promotions" },
+        { title: "Social Media Posts", subtitle: "Awareness & Engagement Graphics" },
+        { title: "Event Graphics", subtitle: "Community Event Media" },
+        { title: "Awareness Campaigns", subtitle: "Purpose-Driven Media Drives" },
+        { title: "Volunteer Drive Designs", subtitle: "Recruitment & Volunteer Media" },
       ],
       colorAccent: "from-[#ee4b56]/15 to-[#201a18]/20",
     },
   ];
 
   const currentOrg = orgs.find((o) => o.id === selectedOrg) || orgs[0];
+
+  const handleOpenModal = (item: any) => {
+    if (item.images && item.images.length > 0) {
+      const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : 0;
+      setActiveModalItem({
+        title: item.title,
+        images: item.images,
+        org: currentOrg.name,
+      });
+      setModalImageIdx(activeIdx);
+    } else if (item.img) {
+      setActiveModalItem({
+        title: item.title,
+        img: item.img,
+        org: currentOrg.name,
+      });
+      setModalImageIdx(0);
+    }
+  };
 
   return (
     <section id="social-media" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#f6f3eb] relative overflow-hidden">
@@ -124,27 +193,19 @@ export default function SocialMediaDesignSection() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 space-y-3 lg:w-72 shrink-0">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase text-[#201a18]/60">Primary Tool</span>
-                <span className="px-2.5 py-1 rounded-md bg-[#ee4b56] text-white text-xs font-bold">
-                  Canva
-                </span>
-              </div>
-              <div className="border-t border-[#201a18]/10 pt-2 space-y-1">
-                <span className="text-[11px] font-bold text-[#201a18]/60 uppercase">Key Deliverables:</span>
-                <div className="flex flex-wrap gap-1">
-                  {currentOrg.deliverables.map((del, i) => (
-                    <span key={i} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-white border border-[#201a18]/15 text-[#201a18]">
-                      • {del}
-                    </span>
-                  ))}
-                </div>
+            <div className="p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 space-y-2 lg:w-72 shrink-0">
+              <span className="text-[11px] font-bold text-[#201a18]/60 uppercase block">Key Deliverables:</span>
+              <div className="flex flex-wrap gap-1">
+                {currentOrg.deliverables.map((del, i) => (
+                  <span key={i} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-white border border-[#201a18]/15 text-[#201a18]">
+                    • {del}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* VISUAL SHOWCASE GRID (Generous white space, large mockups, minimal captions) */}
+          {/* VISUAL SHOWCASE GRID */}
           <div className="space-y-6">
             <div className="flex items-center justify-between border-b border-[#201a18]/10 pb-3">
               <h4 className="text-xl font-black text-[#201a18] font-display-vintage">
@@ -157,55 +218,88 @@ export default function SocialMediaDesignSection() {
 
             {/* Grid of Large Mockup Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {currentOrg.showcase.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group rounded-2xl bg-[#f7f4ed] border-2 border-[#201a18] shadow-card-hover overflow-hidden transition-all duration-300 flex flex-col justify-between"
-                >
-                  {/* Mockup Preview Area */}
-                  <div className={`h-56 p-6 bg-gradient-to-br ${currentOrg.colorAccent} border-b-2 border-[#201a18] flex flex-col justify-between relative overflow-hidden`}>
-                    
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/90 text-[#201a18] border border-[#201a18]/20 backdrop-blur-sm">
-                        {currentOrg.name}
-                      </span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#ee4b56] text-white">
-                        Canva
-                      </span>
-                    </div>
+              {currentOrg.showcase.map((item: any, idx: number) => {
+                const isMultiImage = Boolean(item.images && item.images.length > 0);
+                const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : 0;
+                const currentDisplayImg = isMultiImage ? item.images[activeIdx] : item.img;
+                const hasImage = Boolean(currentDisplayImg);
 
-                    {/* Central Design Element Graphic */}
-                    <div className="text-center my-auto py-2">
-                      <div className="w-12 h-12 rounded-xl bg-white text-[#201a18] group-hover:bg-[#ee4b56] group-hover:text-white flex items-center justify-center mx-auto border border-[#201a18] shadow-md transition-colors">
-                        <Sparkles className="w-6 h-6" />
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => hasImage && handleOpenModal(item)}
+                    className={`group rounded-2xl bg-[#f7f4ed] border-2 border-[#201a18] shadow-card-hover overflow-hidden transition-all duration-300 flex flex-col justify-between ${
+                      hasImage ? "cursor-pointer hover:border-[#ee4b56]" : ""
+                    }`}
+                  >
+                    {/* Mockup Preview Area */}
+                    <div className={`h-64 sm:h-72 p-4 bg-gradient-to-br ${currentOrg.colorAccent} border-b-2 border-[#201a18] flex flex-col justify-between relative overflow-hidden`}>
+                      
+                      <div className="flex items-center justify-between z-10">
+                        <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/90 text-[#201a18] border border-[#201a18]/20 backdrop-blur-sm">
+                          {currentOrg.name}
+                        </span>
                       </div>
-                      <p className="text-xs font-black text-[#201a18] mt-2 font-display-vintage">
-                        {item}
-                      </p>
+
+                      {/* Central Design Element / Real Graphic Image */}
+                      {hasImage ? (
+                        <div className="absolute inset-0 pt-10 p-3 flex items-center justify-center bg-[#201a18]/5 backdrop-blur-xs">
+                          <img
+                            src={currentDisplayImg}
+                            alt={item.title}
+                            className="max-h-full max-w-full object-contain rounded-xl border-2 border-[#201a18] shadow-lg group-hover:scale-105 transition-all duration-500"
+                          />
+                        </div>
+                      ) : (
+                        <div className="text-center my-auto py-2">
+                          <div className="w-12 h-12 rounded-xl bg-white text-[#201a18] group-hover:bg-[#ee4b56] group-hover:text-white flex items-center justify-center mx-auto border border-[#201a18] shadow-md transition-colors">
+                            <Sparkles className="w-6 h-6" />
+                          </div>
+                          <p className="text-xs font-black text-[#201a18] mt-2 font-display-vintage">
+                            {item.title}
+                          </p>
+                        </div>
+                      )}
+
+                      <div className="flex items-center justify-between z-10 w-full">
+                        {isMultiImage && (
+                          <div className="flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-xs">
+                            {item.images.map((_: any, i: number) => (
+                              <span
+                                key={i}
+                                className={`w-1.5 h-1.5 rounded-full transition-all ${
+                                  activeIdx === i ? "bg-[#ee4b56] w-3" : "bg-white/60"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        )}
+                        <span className="text-[9px] font-bold text-[#201a18]/80 bg-white/90 px-2 py-0.5 rounded uppercase tracking-widest border border-[#201a18]/20 ml-auto">
+                          {isMultiImage ? `Photo ${activeIdx + 1} of ${item.images.length}` : hasImage ? "Click to Expand" : `Asset #${idx + 1}`}
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="flex justify-end">
-                      <span className="text-[9px] font-bold text-[#201a18]/50 uppercase tracking-widest">
-                        Asset #{idx + 1}
+                    {/* Minimal Caption Footer */}
+                    <div className="p-4 bg-white flex items-center justify-between">
+                      <div>
+                        <p className="text-xs sm:text-sm font-bold text-[#201a18] group-hover:text-[#ee4b56] transition-colors">
+                          {item.title}
+                        </p>
+                        {item.subtitle && (
+                          <p className="text-[10px] text-[#201a18]/60">
+                            {isMultiImage ? `Photo ${activeIdx + 1} of ${item.images.length}` : item.subtitle}
+                          </p>
+                        )}
+                      </div>
+                      <span className="text-xs text-[#201a18] font-bold group-hover:translate-x-1 transition-transform">
+                        →
                       </span>
                     </div>
-                  </div>
 
-                  {/* Minimal Caption Footer */}
-                  <div className="p-4 bg-white flex items-center justify-between">
-                    <div>
-                      <p className="text-xs font-bold text-[#201a18] group-hover:text-[#ee4b56] transition-colors">
-                        {item}
-                      </p>
-                      <p className="text-[10px] text-[#201a18]/60">Minimal Caption • Canva Asset</p>
-                    </div>
-                    <span className="text-xs text-[#201a18] font-bold group-hover:translate-x-1 transition-transform">
-                      →
-                    </span>
                   </div>
-
-                </div>
-              ))}
+                );
+              })}
             </div>
 
           </div>
@@ -213,6 +307,85 @@ export default function SocialMediaDesignSection() {
         </div>
 
       </div>
+
+      {/* UNIVERSAL FULL RESOLUTION IMAGE MODAL WITH ARROW NAVIGATION */}
+      {activeModalItem && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200">
+          <div className="relative max-w-4xl w-full bg-white rounded-3xl border-4 border-[#201a18] shadow-2xl p-4 sm:p-6 space-y-4">
+            
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b-2 border-[#201a18]/10 pb-3">
+              <div>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#ee4b56] text-white uppercase">
+                  {activeModalItem.org}
+                </span>
+                <h4 className="text-xl sm:text-2xl font-black text-[#201a18] font-display-vintage mt-1">
+                  {activeModalItem.title}
+                </h4>
+                {activeModalItem.images && (
+                  <p className="text-xs font-bold text-[#ee4b56] mt-0.5">
+                    Image {modalImageIdx + 1} of {activeModalItem.images.length}
+                  </p>
+                )}
+              </div>
+              <button
+                onClick={() => setActiveModalItem(null)}
+                className="w-10 h-10 rounded-full bg-[#201a18] text-white font-bold hover:bg-[#ee4b56] transition-colors flex items-center justify-center text-sm shadow-md shrink-0"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Modal Image View & Arrow Navigation */}
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[#201a18] bg-[#f7f4ed] p-2 flex items-center justify-center min-h-[50vh] max-h-[75vh]">
+              
+              {/* Left Arrow Button */}
+              {activeModalItem.images && activeModalItem.images.length > 1 && (
+                <button
+                  onClick={() => setModalImageIdx((prev) => (prev - 1 + activeModalItem.images!.length) % activeModalItem.images!.length)}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#201a18]/90 text-white hover:bg-[#ee4b56] transition-all flex items-center justify-center shadow-2xl z-20 border-2 border-white hover:scale-110"
+                  aria-label="Previous Image"
+                >
+                  <ChevronLeft className="w-7 h-7" />
+                </button>
+              )}
+
+              <img
+                src={activeModalItem.images ? activeModalItem.images[modalImageIdx] : activeModalItem.img}
+                alt={activeModalItem.title}
+                className="max-h-[70vh] max-w-full object-contain rounded-xl shadow-md transition-all duration-300"
+              />
+
+              {/* Right Arrow Button */}
+              {activeModalItem.images && activeModalItem.images.length > 1 && (
+                <button
+                  onClick={() => setModalImageIdx((prev) => (prev + 1) % activeModalItem.images!.length)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#201a18]/90 text-white hover:bg-[#ee4b56] transition-all flex items-center justify-center shadow-2xl z-20 border-2 border-white hover:scale-110"
+                  aria-label="Next Image"
+                >
+                  <ChevronRight className="w-7 h-7" />
+                </button>
+              )}
+            </div>
+
+            {/* Indicator Dots for Multi-Image Modal */}
+            {activeModalItem.images && activeModalItem.images.length > 1 && (
+              <div className="flex items-center justify-center gap-2 pt-2">
+                {activeModalItem.images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setModalImageIdx(i)}
+                    className={`w-3 h-3 rounded-full transition-all border border-[#201a18] ${
+                      modalImageIdx === i ? "bg-[#ee4b56] scale-125" : "bg-[#201a18]/20 hover:bg-[#201a18]/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+
+          </div>
+        </div>
+      )}
     </section>
   );
 }
