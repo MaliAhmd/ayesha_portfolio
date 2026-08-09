@@ -50,39 +50,39 @@ export default function AboutSection() {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[#ee4b56]/20 to-[#201a18]/10 blur-xl" />
               
-              <div className="relative rounded-3xl p-8 bg-white shadow-2xl border-2 border-[#201a18] text-[#201a18] space-y-6">
+              <div className="relative rounded-3xl p-5 sm:p-8 bg-white shadow-2xl border-2 border-[#201a18] text-[#201a18] space-y-6">
                 <div className="flex items-center justify-between border-b border-[#201a18]/10 pb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-[#ee4b56] text-white flex items-center justify-center font-bold text-xl border-2 border-[#201a18]">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#ee4b56] text-white flex items-center justify-center font-bold text-lg sm:text-xl border-2 border-[#201a18] shrink-0">
                       AK
                     </div>
                     <div>
-                      <h4 className="font-bold text-base font-sans">AYESHA ARSHAD KHAN</h4>
-                      <p className="text-xs text-[#ee4b56] font-semibold">Marketing Graduate &amp; Designer</p>
+                      <h4 className="font-bold text-sm sm:text-base font-sans leading-tight">AYESHA ARSHAD KHAN</h4>
+                      <p className="text-[11px] sm:text-xs text-[#ee4b56] font-semibold">Marketing Graduate &amp; Designer</p>
                     </div>
                   </div>
-                  <Sparkles className="w-6 h-6 text-[#ee4b56]" />
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#ee4b56] shrink-0" />
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 space-y-2">
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#ee4b56]">Core Mantra</p>
-                  <p className="text-base font-serif-vintage italic font-bold text-[#201a18]">
+                <div className="p-4 sm:p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 space-y-2">
+                  <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#ee4b56]">Core Mantra</p>
+                  <p className="text-sm sm:text-base font-serif-vintage italic font-bold text-[#201a18]">
                     &ldquo;Marketing is where strategy meets creativity.&rdquo;
                   </p>
                 </div>
 
                 <div className="space-y-2 text-xs font-semibold text-[#201a18]/70">
-                  <div className="flex justify-between py-1.5 border-b border-[#201a18]/10">
-                    <span>Education:</span>
-                    <span className="font-bold text-[#201a18]">Bachelors of Business Administration</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-[#201a18]/10 gap-0.5 sm:gap-2">
+                    <span className="text-[#201a18]/60">Education:</span>
+                    <span className="font-bold text-[#201a18] sm:text-right">Bachelors of Business Administration</span>
                   </div>
-                  <div className="flex justify-between py-1.5 border-b border-[#201a18]/10">
-                    <span>Specialization:</span>
-                    <span className="font-bold text-[#201a18]">Marketing</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-[#201a18]/10 gap-0.5 sm:gap-2">
+                    <span className="text-[#201a18]/60">Specialization:</span>
+                    <span className="font-bold text-[#201a18] sm:text-right">Marketing</span>
                   </div>
-                  <div className="flex justify-between py-1.5">
-                    <span>Focus:</span>
-                    <span className="font-bold text-[#ee4b56]">Purpose-Driven Communication</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 gap-0.5 sm:gap-2">
+                    <span className="text-[#201a18]/60">Focus:</span>
+                    <span className="font-bold text-[#ee4b56] sm:text-right">Purpose-Driven Communication</span>
                   </div>
                 </div>
               </div>
@@ -99,11 +99,11 @@ export default function AboutSection() {
               I'm <strong className="text-[#201a18] font-bold">Ayesha Arshad Khan</strong>, a Marketing graduate passionate about building brands, creating meaningful content and exploring the intersection of creativity and digital marketing.
             </p>
 
-            <p className="text-sm sm:text-base text-[#201a18]/75 leading-relaxed font-sans">
+            <p className="text-base sm:text-lg text-[#201a18]/85 leading-relaxed font-sans font-medium">
               With experience in branding, social media design and digital marketing gained through internships and creative leadership roles, I enjoy transforming ideas into visuals and campaigns that communicate with purpose.
             </p>
 
-            <p className="text-sm sm:text-base text-[#201a18]/75 leading-relaxed font-sans">
+            <p className="text-base sm:text-lg text-[#201a18]/85 leading-relaxed font-sans font-medium">
               This portfolio is a curated collection of projects that reflect my creativity, continuous learning and passion for meaningful marketing.
             </p>
           </div>

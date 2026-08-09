@@ -34,7 +34,7 @@ export default function CreativeCollectionSection() {
         </div>
 
         {/* INVITATION DESIGNS SUBSECTION */}
-        <div className="rounded-3xl bg-white border-2 border-[#201a18] shadow-2xl p-8 sm:p-12 space-y-10">
+        <div className="rounded-3xl bg-white border-2 border-[#201a18] shadow-2xl p-5 sm:p-8 lg:p-12 space-y-8 sm:space-y-10">
           
           <div className="border-b-2 border-[#201a18]/10 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>

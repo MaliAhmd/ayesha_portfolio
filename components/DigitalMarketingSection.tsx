@@ -141,7 +141,7 @@ export default function DigitalMarketingSection() {
         </div>
 
         {/* FEATURED PROJECT: INTELLECTRA */}
-        <div id="intellectra" className="rounded-3xl p-8 sm:p-12 bg-white border-2 border-[#201a18] shadow-2xl space-y-12">
+        <div id="intellectra" className="rounded-3xl p-5 sm:p-8 lg:p-12 bg-white border-2 border-[#201a18] shadow-2xl space-y-8 sm:space-y-12">
           
           {/* Project Title Block */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b-2 border-[#201a18]/10 pb-8">
@@ -152,7 +152,7 @@ export default function DigitalMarketingSection() {
               <h3 className="text-3xl sm:text-5xl font-black text-[#201a18] font-display-vintage">
                 INTELLECTRA
               </h3>
-              <p className="text-base font-bold text-[#ee4b56] uppercase tracking-wide">
+              <p className="text-sm sm:text-base font-bold text-[#ee4b56] uppercase tracking-wide">
                 Engineering Consultancy • Branding • Website Content • Content Strategy
               </p>
               <p className="text-sm italic font-serif-vintage text-[#201a18]/70">
@@ -163,7 +163,7 @@ export default function DigitalMarketingSection() {
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 lg:w-80 shrink-0 space-y-3">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/15 w-full lg:w-80 shrink-0 space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60 block">Brand Marks</span>
               <div className="grid grid-cols-2 gap-2">
                 <div className="h-16 bg-white rounded-xl border border-[#201a18]/15 p-2 flex items-center justify-center shadow-sm overflow-hidden">
@@ -187,8 +187,8 @@ export default function DigitalMarketingSection() {
           </div>
 
           {/* Project Overview */}
-          <div className="w-full space-y-4 p-6 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/10">
-            <h4 className="text-lg font-black text-[#201a18] uppercase tracking-wider font-sans">
+          <div className="w-full space-y-3 p-5 sm:p-6 rounded-2xl bg-[#f7f4ed] border border-[#201a18]/10">
+            <h4 className="text-base sm:text-lg font-black text-[#201a18] uppercase tracking-wider font-sans">
               Project Overview
             </h4>
             <p className="text-sm sm:text-base text-[#201a18]/80 leading-relaxed">
@@ -197,11 +197,11 @@ export default function DigitalMarketingSection() {
           </div>
 
           {/* Deliverables Checklist */}
-          <div className="p-6 rounded-2xl bg-[#201a18] text-white space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-[#ee4b56]">
+          <div className="p-5 sm:p-6 rounded-2xl bg-[#201a18] text-white space-y-4">
+            <h4 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#ee4b56]">
               Project Deliverables Checklist:
             </h4>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {deliverables.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white/90">
                   <CheckCircle2 className="w-4 h-4 text-[#ee4b56] shrink-0" />

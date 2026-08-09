@@ -54,61 +54,61 @@ export default function ContactSection() {
 
             {/* Direct Channel Cards */}
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#201a18] text-white flex items-center justify-center shrink-0">
                   <Mail className="w-6 h-6 text-[#ee4b56]" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60">Email</p>
-                  <a href="mailto:kayesha2614@gmail.com" className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors">
+                  <a href="mailto:kayesha2614@gmail.com" className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors break-all sm:break-normal block">
                     kayesha2614@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#ee4b56] text-white flex items-center justify-center shrink-0 border border-[#201a18]">
                   <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60">LinkedIn Profile</p>
                   <a
                     href="https://www.linkedin.com/in/ayeshaarshadkhan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors"
+                    className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors break-all sm:break-normal block"
                   >
                     www.linkedin.com/in/ayeshaarshadkhan
                   </a>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#201a18] text-white flex items-center justify-center shrink-0">
                   <Globe className="w-6 h-6 text-[#ee4b56]" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60">Portfolio Link</p>
-                  <a href="#hero" className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors">
+                  <a href="#hero" className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors break-all sm:break-normal block">
                     ayesha-marketing-portfolio.com
                   </a>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border-2 border-[#201a18] shadow-sm flex items-center gap-4 hover:border-[#ee4b56] transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#ee4b56] text-white flex items-center justify-center shrink-0 border border-[#201a18]">
                   <Download className="w-6 h-6" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#201a18]/60">Resume</p>
                   <a
                     href="/Resume (Ayesha Arshad Khan).pdf"
                     download="Resume (Ayesha Arshad Khan).pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors flex items-center gap-1"
+                    className="text-sm sm:text-base font-bold text-[#201a18] hover:text-[#ee4b56] transition-colors flex items-center gap-1 break-words"
                   >
                     <span>Download Official Resume (PDF)</span>
                   </a>
@@ -120,7 +120,7 @@ export default function ContactSection() {
 
           {/* Right Interactive Message Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-white p-8 sm:p-10 border-2 border-[#201a18] shadow-2xl relative">
+            <div className="rounded-3xl bg-white p-5 sm:p-8 lg:p-10 border-2 border-[#201a18] shadow-2xl relative">
               
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
