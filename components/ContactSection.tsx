@@ -1,21 +1,46 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Send, CheckCircle2, Sparkles, Globe, Download, FileText, Presentation, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, Sparkles, Globe, Download, FileText, Presentation, ExternalLink, Loader2, AlertCircle } from "lucide-react";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     service: "Digital Marketing",
-    budget: "$1k - $3k",
+    budget: "Immediate",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send email. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setErrorMessage(err.message || "An unexpected error occurred.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -140,8 +165,17 @@ export default function ContactSection() {
                     Your message has been sent successfully. Ayesha will read your project details and respond shortly.
                   </p>
                   <button
-                    onClick={() => setSubmitted(false)}
-                    className="mt-6 px-6 py-2.5 rounded-full bg-[#201a18] text-white font-bold text-xs uppercase hover:bg-[#ee4b56] transition-colors"
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        name: "",
+                        email: "",
+                        service: "Digital Marketing",
+                        budget: "Immediate",
+                        message: "",
+                      });
+                    }}
+                    className="mt-6 px-6 py-2.5 rounded-full bg-[#201a18] text-white font-bold text-xs uppercase hover:bg-[#ee4b56] transition-colors cursor-pointer"
                   >
                     Send Another Message
                   </button>
@@ -156,6 +190,13 @@ export default function ContactSection() {
                       Fill out the details below to initiate a discussion or collaboration.
                     </p>
                   </div>
+
+                  {errorMessage && (
+                    <div className="p-4 rounded-xl bg-red-50 border-2 border-red-500 text-red-700 flex items-center gap-3 text-xs sm:text-sm font-semibold">
+                      <AlertCircle className="w-5 h-5 shrink-0 text-red-600" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
@@ -237,10 +278,20 @@ export default function ContactSection() {
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full bg-[#ee4b56] text-white hover:bg-[#d32f3a] font-bold text-base shadow-xl transition-all duration-300 flex items-center justify-center gap-3 border-2 border-[#201a18]"
+                    disabled={loading}
+                    className="w-full py-4 rounded-full bg-[#ee4b56] text-white hover:bg-[#d32f3a] font-bold text-base shadow-xl transition-all duration-300 flex items-center justify-center gap-3 border-2 border-[#201a18] disabled:opacity-60 cursor-pointer"
                   >
-                    <span>Send Message</span>
-                    <Send className="w-5 h-5" />
+                    {loading ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <span>Sending Email...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <Send className="w-5 h-5" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}
@@ -254,3 +305,4 @@ export default function ContactSection() {
     </section>
   );
 }
+

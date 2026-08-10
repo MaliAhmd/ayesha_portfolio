@@ -16,6 +16,8 @@ export default function SocialMediaDesignSection() {
   const [movieIdx, setMovieIdx] = useState<number>(0);
   const [collabIdx, setCollabIdx] = useState<number>(0);
   const [certIdx, setCertIdx] = useState<number>(0);
+  const [mediaFestIdx, setMediaFestIdx] = useState<number>(0);
+  const [qauMediaFestIdx, setQauMediaFestIdx] = useState<number>(0);
   const [wohCabinetIdx, setWohCabinetIdx] = useState<number>(0);
   const [wohDonationIdx, setWohDonationIdx] = useState<number>(0);
   const [wohCertIdx, setWohCertIdx] = useState<number>(0);
@@ -50,6 +52,17 @@ export default function SocialMediaDesignSection() {
     "/certificates/4.jpeg",
     "/certificates/5.jpeg",
     "/certificates/6.jpeg",
+  ];
+
+  const mediaFestImages = [
+    "/Media Learning Fest/Media Learning Workshop.jpeg",
+    "/Media Learning Fest/QMC Media Learning FEST.jpeg",
+  ];
+
+  const qauMediaFestImages = [
+    "/Media Fest/1.jpeg",
+    "/Media Fest/2.jpeg",
+    "/Media Fest/3.jpeg",
   ];
 
   // Wall of Hope Image Collections
@@ -87,13 +100,13 @@ export default function SocialMediaDesignSection() {
     "/Speakers/2.jpeg",
     "/Speakers/3.jpeg",
     "/Speakers/4.jpeg",
+    "/Speakers/5.jpeg",
+    "/Speakers/6.jpeg",
+    "/Speakers/7.jpeg",
   ];
 
   const tedxIdCardImages = [
     "/ID Cards/1.jpeg",
-    "/ID Cards/2.jpeg",
-    "/ID Cards/3.jpeg",
-    "/ID Cards/4.jpeg",
     "/ID Cards/5.jpeg",
     "/ID Cards/6.jpeg",
     "/ID Cards/7.jpeg",
@@ -130,6 +143,22 @@ export default function SocialMediaDesignSection() {
     }, 2000);
     return () => clearInterval(timer);
   }, [certImages.length]);
+
+  // Auto-swipe Media Learning Fest images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMediaFestIdx((prev) => (prev + 1) % mediaFestImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [mediaFestImages.length]);
+
+  // Auto-swipe QAU Media Fest images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setQauMediaFestIdx((prev) => (prev + 1) % qauMediaFestImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [qauMediaFestImages.length]);
 
   // Auto-swipe Wall of Hope Core Cabinet images every 2 seconds
   useEffect(() => {
@@ -215,13 +244,13 @@ export default function SocialMediaDesignSection() {
         },
         {
           title: "Speaker Announcements",
-          subtitle: "Official Speaker Teasers & Profiles (4 Photos)",
+          subtitle: "Official Speaker Teasers & Profiles (7 Photos)",
           images: tedxSpeakerImages,
           isTedxSpeaker: true,
         },
         {
           title: "ID Cards & Event Badges",
-          subtitle: "Official Pass & Credentials Design (7 Photos)",
+          subtitle: "Official Pass & Credentials Design (4 Photos)",
           images: tedxIdCardImages,
           isTedxIdCard: true,
         },
@@ -272,11 +301,19 @@ export default function SocialMediaDesignSection() {
           images: certImages,
           isCert: true,
         },
+        {
+          title: "Media Learning Workshop",
+          subtitle: "Skills & Learning Festival (2 Photos)",
+          images: mediaFestImages,
+          isMediaFest: true,
+        },
+        {
+          title: "QAU Media Fest Campaign",
+          subtitle: "Flagship Event Campaign & Posters (3 Photos)",
+          images: qauMediaFestImages,
+          isQauMediaFest: true,
+        },
         { title: "Core Team Announcement", subtitle: "Official QMC Core Team Reveal", img: "/QMC/Core Team.jpeg" },
-        { title: "Media Learning Workshop", subtitle: "Interactive Workshop Series", img: "/QMC/Media Learning Workshop.jpeg" },
-        { title: "QAU Media Fest Presents", subtitle: "Annual Media Fest Announcement", img: "/QMC/QAU Medi Fest Presents.jpeg" },
-        { title: "QAU Media Fest Official Poster", subtitle: "Flagship Event Campaign Poster", img: "/QMC/QAU Media Fest.jpeg" },
-        { title: "QMC Media Learning Fest", subtitle: "Skills & Learning Festival", img: "/QMC/QMC Media Learning FEST.jpeg" },
         { title: "Join QMC Recruitment Campaign", subtitle: "Student Recruitment Drive", img: "/QMC/join our QMC.jpeg" },
       ],
       colorAccent: "from-[#201a18]/20 to-[#ee4b56]/15",
@@ -352,6 +389,10 @@ export default function SocialMediaDesignSection() {
         ? collabIdx
         : item.isCert
         ? certIdx
+        : item.isMediaFest
+        ? mediaFestIdx
+        : item.isQauMediaFest
+        ? qauMediaFestIdx
         : item.isWohCabinet
         ? wohCabinetIdx
         : item.isWohDonation
@@ -463,6 +504,10 @@ export default function SocialMediaDesignSection() {
                   ? collabIdx
                   : item.isCert
                   ? certIdx
+                  : item.isMediaFest
+                  ? mediaFestIdx
+                  : item.isQauMediaFest
+                  ? qauMediaFestIdx
                   : item.isWohCabinet
                   ? wohCabinetIdx
                   : item.isWohDonation

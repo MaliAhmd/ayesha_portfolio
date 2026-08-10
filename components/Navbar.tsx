@@ -46,8 +46,6 @@ export default function Navbar() {
             { label: "Digital Marketing", href: "#digital-marketing" },
             { label: "Social Media Design", href: "#social-media" },
             { label: "Creative Collection", href: "#creative-collection" },
-            { label: "Toolbox", href: "#toolbox" },
-            { label: "Connect", href: "#contact" },
           ].map((link) => (
             <a
               key={link.label}
@@ -90,8 +88,6 @@ export default function Navbar() {
             { label: "Digital Marketing (Intellectra)", href: "#digital-marketing" },
             { label: "Social Media Design (TEDx, Quaidian, Hope)", href: "#social-media" },
             { label: "Creative Collection (Invitations)", href: "#creative-collection" },
-            { label: "My Toolbox & Philosophy", href: "#toolbox" },
-            { label: "Let's Connect", href: "#contact" },
           ].map((link) => (
             <a
               key={link.label}
