@@ -16,6 +16,12 @@ export default function SocialMediaDesignSection() {
   const [movieIdx, setMovieIdx] = useState<number>(0);
   const [collabIdx, setCollabIdx] = useState<number>(0);
   const [certIdx, setCertIdx] = useState<number>(0);
+  const [wohCabinetIdx, setWohCabinetIdx] = useState<number>(0);
+  const [wohDonationIdx, setWohDonationIdx] = useState<number>(0);
+  const [wohCertIdx, setWohCertIdx] = useState<number>(0);
+  const [tedxExecIdx, setTedxExecIdx] = useState<number>(0);
+  const [tedxSpeakerIdx, setTedxSpeakerIdx] = useState<number>(0);
+  const [tedxIdCardIdx, setTedxIdCardIdx] = useState<number>(0);
 
   const cabinetImages = [
     "/Cabinet/0.jpeg",
@@ -44,7 +50,53 @@ export default function SocialMediaDesignSection() {
     "/certificates/4.jpeg",
     "/certificates/5.jpeg",
     "/certificates/6.jpeg",
+  ];
 
+  // Wall of Hope Image Collections
+  const wohCabinetImages = [
+    "/Core Cabinet announcement/1.jpeg",
+    "/Core Cabinet announcement/2.jpeg",
+    "/Core Cabinet announcement/3.jpeg",
+  ];
+
+  const wohDonationImages = [
+    "/Donation posts/1.jpeg",
+    "/Donation posts/2.jpeg",
+    "/Donation posts/3.jpeg",
+  ];
+
+  const wohCertImages = [
+    "/WOH Certificates/1.jpeg",
+    "/WOH Certificates/2.jpeg",
+    "/WOH Certificates/3.jpeg",
+  ];
+
+  // TEDxQAU Image Collections
+  const tedxExecImages = [
+    "/Curators and Executives annt/1.jpeg",
+    "/Curators and Executives annt/2.jpeg",
+    "/Curators and Executives annt/3.jpeg",
+    "/Curators and Executives annt/4.jpeg",
+    "/Curators and Executives annt/5.jpeg",
+    "/Curators and Executives annt/6.jpeg",
+    "/Curators and Executives annt/7.jpeg",
+  ];
+
+  const tedxSpeakerImages = [
+    "/Speakers/1.jpeg",
+    "/Speakers/2.jpeg",
+    "/Speakers/3.jpeg",
+    "/Speakers/4.jpeg",
+  ];
+
+  const tedxIdCardImages = [
+    "/ID Cards/1.jpeg",
+    "/ID Cards/2.jpeg",
+    "/ID Cards/3.jpeg",
+    "/ID Cards/4.jpeg",
+    "/ID Cards/5.jpeg",
+    "/ID Cards/6.jpeg",
+    "/ID Cards/7.jpeg",
   ];
 
   // Auto-swipe Cabinet images every 2 seconds
@@ -79,6 +131,71 @@ export default function SocialMediaDesignSection() {
     return () => clearInterval(timer);
   }, [certImages.length]);
 
+  // Auto-swipe Wall of Hope Core Cabinet images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWohCabinetIdx((prev) => (prev + 1) % wohCabinetImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [wohCabinetImages.length]);
+
+  // Auto-swipe Wall of Hope Donation images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWohDonationIdx((prev) => (prev + 1) % wohDonationImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [wohDonationImages.length]);
+
+  // Auto-swipe Wall of Hope Certificates every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWohCertIdx((prev) => (prev + 1) % wohCertImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [wohCertImages.length]);
+
+  // Auto-swipe TEDx Curators & Executives images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTedxExecIdx((prev) => (prev + 1) % tedxExecImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [tedxExecImages.length]);
+
+  // Auto-swipe TEDx Speaker images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTedxSpeakerIdx((prev) => (prev + 1) % tedxSpeakerImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [tedxSpeakerImages.length]);
+
+  // Auto-swipe TEDx ID Card images every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTedxIdCardIdx((prev) => (prev + 1) % tedxIdCardImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [tedxIdCardImages.length]);
+
+  // Keyboard navigation for image modal preview
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!activeModalItem || !activeModalItem.images) return;
+      const total = activeModalItem.images.length;
+      if (e.key === "Escape") {
+        setActiveModalItem(null);
+      } else if (e.key === "ArrowLeft" && total > 1) {
+        setModalImageIdx((prev) => (prev - 1 + total) % total);
+      } else if (e.key === "ArrowRight" && total > 1) {
+        setModalImageIdx((prev) => (prev + 1) % total);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeModalItem]);
+
   const orgs = [
     {
       id: "tedx",
@@ -90,13 +207,34 @@ export default function SocialMediaDesignSection() {
       deliverables: ["Event Branding", "Social Media Posts", "Event Promotions", "Digital Creatives"],
       tools: ["Canva"],
       showcase: [
-        { title: "Instagram Feed Designs", subtitle: "Event Feed Aesthetics" },
-        { title: "Instagram Stories", subtitle: "Speaker Teasers & Highlights" },
-        { title: "Event Posters", subtitle: "Official Promotional Posters" },
-        { title: "Speaker Announcements", subtitle: "Speaker Profile Creatives" },
-        { title: "Event Day Creatives", subtitle: "On-site Digital Collateral" },
-        { title: "Event Photography with Designed Assets", subtitle: "Event Photography & Overlays" },
-        { title: "Certificate of Appreciation", subtitle: "Official TEDx Certificate • High Res", img: "/images/certificate_image.jpeg" },
+        {
+          title: "Curators & Executives Announcement",
+          subtitle: "Executive Team Teasers & Reveals (7 Photos)",
+          images: tedxExecImages,
+          isTedxExec: true,
+        },
+        {
+          title: "Speaker Announcements",
+          subtitle: "Official Speaker Teasers & Profiles (4 Photos)",
+          images: tedxSpeakerImages,
+          isTedxSpeaker: true,
+        },
+        {
+          title: "ID Cards & Event Badges",
+          subtitle: "Official Pass & Credentials Design (7 Photos)",
+          images: tedxIdCardImages,
+          isTedxIdCard: true,
+        },
+        {
+          title: "TEDx Newsletter",
+          subtitle: "Official Event Newsletter & Updates",
+          img: "/Newsletter/1.jpeg",
+        },
+        {
+          title: "Certificate of Appreciation",
+          subtitle: "Official TEDx Certificate • High Res",
+          img: "/images/certificate_image.jpeg",
+        },
       ],
       colorAccent: "from-[#ee4b56]/20 to-[#201a18]/10",
     },
@@ -153,11 +291,44 @@ export default function SocialMediaDesignSection() {
       deliverables: ["Awareness Campaigns", "Event Promotions", "Social Media Graphics", "Digital Creatives"],
       tools: ["Canva"],
       showcase: [
-        { title: "Campaign Posters", subtitle: "Social Cause Promotions" },
-        { title: "Social Media Posts", subtitle: "Awareness & Engagement Graphics" },
-        { title: "Event Graphics", subtitle: "Community Event Media" },
-        { title: "Awareness Campaigns", subtitle: "Purpose-Driven Media Drives" },
-        { title: "Volunteer Drive Designs", subtitle: "Recruitment & Volunteer Media" },
+        {
+          title: "Core Cabinet Announcement",
+          subtitle: "Official Cabinet Reveal (3 Photos)",
+          images: wohCabinetImages,
+          isWohCabinet: true,
+        },
+        {
+          title: "Donation Posts",
+          subtitle: "Social Cause & Donation Drive (3 Photos)",
+          images: wohDonationImages,
+          isWohDonation: true,
+        },
+        {
+          title: "Creative Competition",
+          subtitle: "Design & Poster Contest",
+          img: "/Creative competition/2.jpeg",
+        },
+        {
+          title: "Labour Day",
+          subtitle: "Awareness & Tribute Post",
+          img: "/Labour day/1.jpeg",
+        },
+        {
+          title: "Old Age Home Visit",
+          subtitle: "Community Support & Social Drive",
+          img: "/Old age home visit/1.jpeg",
+        },
+        {
+          title: "Online Webinar",
+          subtitle: "Virtual Event & Session Banner",
+          img: "/Online webinar/1.jpeg",
+        },
+        {
+          title: "WOH Certificates",
+          subtitle: "Certificates of Appreciation (3 Photos)",
+          images: wohCertImages,
+          isWohCert: true,
+        },
       ],
       colorAccent: "from-[#ee4b56]/15 to-[#201a18]/20",
     },
@@ -166,21 +337,41 @@ export default function SocialMediaDesignSection() {
   const currentOrg = orgs.find((o) => o.id === selectedOrg) || orgs[0];
 
   const handleOpenModal = (item: any) => {
-    if (item.images && item.images.length > 0) {
-      const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : item.isCert ? certIdx : 0;
+    const itemImages = item.images && item.images.length > 0
+      ? item.images
+      : item.img
+      ? [item.img]
+      : [];
+
+    if (itemImages.length > 0) {
+      const activeIdx = item.isCabinet
+        ? cabinetIdx
+        : item.isMovie
+        ? movieIdx
+        : item.isCollab
+        ? collabIdx
+        : item.isCert
+        ? certIdx
+        : item.isWohCabinet
+        ? wohCabinetIdx
+        : item.isWohDonation
+        ? wohDonationIdx
+        : item.isWohCert
+        ? wohCertIdx
+        : item.isTedxExec
+        ? tedxExecIdx
+        : item.isTedxSpeaker
+        ? tedxSpeakerIdx
+        : item.isTedxIdCard
+        ? tedxIdCardIdx
+        : 0;
+
       setActiveModalItem({
         title: item.title,
-        images: item.images,
+        images: itemImages,
         org: currentOrg.name,
       });
-      setModalImageIdx(activeIdx);
-    } else if (item.img) {
-      setActiveModalItem({
-        title: item.title,
-        img: item.img,
-        org: currentOrg.name,
-      });
-      setModalImageIdx(0);
+      setModalImageIdx(activeIdx < itemImages.length ? activeIdx : 0);
     }
   };
 
@@ -207,7 +398,7 @@ export default function SocialMediaDesignSection() {
             <button
               key={org.id}
               onClick={() => setSelectedOrg(org.id)}
-              className={`px-6 py-3 rounded-full text-xs sm:text-sm font-bold transition-all border-2 flex items-center gap-2 ${selectedOrg === org.id
+              className={`px-6 py-3 rounded-full text-xs sm:text-sm font-bold transition-all border-2 flex items-center gap-2 cursor-pointer ${selectedOrg === org.id
                   ? "bg-[#201a18] text-white border-[#201a18] shadow-lg scale-105"
                   : "bg-white text-[#201a18] border-[#201a18]/15 hover:border-[#201a18]"
                 }`}
@@ -264,9 +455,30 @@ export default function SocialMediaDesignSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentOrg.showcase.map((item: any, idx: number) => {
                 const isMultiImage = Boolean(item.images && item.images.length > 0);
-                const activeIdx = item.isCabinet ? cabinetIdx : item.isMovie ? movieIdx : item.isCollab ? collabIdx : item.isCert ? certIdx : 0;
+                const activeIdx = item.isCabinet
+                  ? cabinetIdx
+                  : item.isMovie
+                  ? movieIdx
+                  : item.isCollab
+                  ? collabIdx
+                  : item.isCert
+                  ? certIdx
+                  : item.isWohCabinet
+                  ? wohCabinetIdx
+                  : item.isWohDonation
+                  ? wohDonationIdx
+                  : item.isWohCert
+                  ? wohCertIdx
+                  : item.isTedxExec
+                  ? tedxExecIdx
+                  : item.isTedxSpeaker
+                  ? tedxSpeakerIdx
+                  : item.isTedxIdCard
+                  ? tedxIdCardIdx
+                  : 0;
                 const currentDisplayImg = isMultiImage ? item.images[activeIdx] : item.img;
                 const hasImage = Boolean(currentDisplayImg);
+
 
                 return (
                   <div
@@ -351,7 +563,7 @@ export default function SocialMediaDesignSection() {
       </div>
 
       {/* UNIVERSAL FULL RESOLUTION IMAGE MODAL WITH ARROW NAVIGATION */}
-      {activeModalItem && (
+      {activeModalItem && activeModalItem.images && activeModalItem.images.length > 0 && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200">
           <div className="relative max-w-4xl w-full bg-white rounded-3xl border-4 border-[#201a18] shadow-2xl p-4 sm:p-6 space-y-4">
 
@@ -364,7 +576,7 @@ export default function SocialMediaDesignSection() {
                 <h4 className="text-xl sm:text-2xl font-black text-[#201a18] font-display-vintage mt-1">
                   {activeModalItem.title}
                 </h4>
-                {activeModalItem.images && (
+                {activeModalItem.images.length > 1 && (
                   <p className="text-xs font-bold text-[#ee4b56] mt-0.5">
                     Image {modalImageIdx + 1} of {activeModalItem.images.length}
                   </p>
@@ -372,7 +584,7 @@ export default function SocialMediaDesignSection() {
               </div>
               <button
                 onClick={() => setActiveModalItem(null)}
-                className="w-10 h-10 rounded-full bg-[#201a18] text-white font-bold hover:bg-[#ee4b56] transition-colors flex items-center justify-center text-sm shadow-md shrink-0"
+                className="w-10 h-10 rounded-full bg-[#201a18] text-white font-bold hover:bg-[#ee4b56] transition-colors flex items-center justify-center text-sm shadow-md shrink-0 cursor-pointer"
               >
                 ✕
               </button>
@@ -382,10 +594,14 @@ export default function SocialMediaDesignSection() {
             <div className="relative rounded-2xl overflow-hidden border-2 border-[#201a18] bg-[#f7f4ed] p-2 flex items-center justify-center min-h-[50vh] max-h-[75vh]">
 
               {/* Left Arrow Button */}
-              {activeModalItem.images && activeModalItem.images.length > 1 && (
+              {activeModalItem.images.length > 1 && (
                 <button
-                  onClick={() => setModalImageIdx((prev) => (prev - 1 + activeModalItem.images!.length) % activeModalItem.images!.length)}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#201a18]/90 text-white hover:bg-[#ee4b56] transition-all flex items-center justify-center shadow-2xl z-20 border-2 border-white hover:scale-110"
+                  onClick={() =>
+                    setModalImageIdx(
+                      (prev) => (prev - 1 + activeModalItem.images!.length) % activeModalItem.images!.length
+                    )
+                  }
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#201a18]/90 text-white hover:bg-[#ee4b56] transition-all flex items-center justify-center shadow-2xl z-20 border-2 border-white hover:scale-110 cursor-pointer"
                   aria-label="Previous Image"
                 >
                   <ChevronLeft className="w-7 h-7" />
@@ -393,16 +609,18 @@ export default function SocialMediaDesignSection() {
               )}
 
               <img
-                src={activeModalItem.images ? activeModalItem.images[modalImageIdx] : activeModalItem.img}
-                alt={activeModalItem.title}
+                src={activeModalItem.images[modalImageIdx]}
+                alt={`${activeModalItem.title} - Image ${modalImageIdx + 1}`}
                 className="max-h-[70vh] max-w-full object-contain rounded-xl shadow-md transition-all duration-300"
               />
 
               {/* Right Arrow Button */}
-              {activeModalItem.images && activeModalItem.images.length > 1 && (
+              {activeModalItem.images.length > 1 && (
                 <button
-                  onClick={() => setModalImageIdx((prev) => (prev + 1) % activeModalItem.images!.length)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#201a18]/90 text-white hover:bg-[#ee4b56] transition-all flex items-center justify-center shadow-2xl z-20 border-2 border-white hover:scale-110"
+                  onClick={() =>
+                    setModalImageIdx((prev) => (prev + 1) % activeModalItem.images!.length)
+                  }
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#201a18]/90 text-white hover:bg-[#ee4b56] transition-all flex items-center justify-center shadow-2xl z-20 border-2 border-white hover:scale-110 cursor-pointer"
                   aria-label="Next Image"
                 >
                   <ChevronRight className="w-7 h-7" />
@@ -411,14 +629,15 @@ export default function SocialMediaDesignSection() {
             </div>
 
             {/* Indicator Dots for Multi-Image Modal */}
-            {activeModalItem.images && activeModalItem.images.length > 1 && (
+            {activeModalItem.images.length > 1 && (
               <div className="flex items-center justify-center gap-2 pt-2">
                 {activeModalItem.images.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setModalImageIdx(i)}
-                    className={`w-3 h-3 rounded-full transition-all border border-[#201a18] ${modalImageIdx === i ? "bg-[#ee4b56] scale-125" : "bg-[#201a18]/20 hover:bg-[#201a18]/50"
-                      }`}
+                    className={`w-3 h-3 rounded-full transition-all border border-[#201a18] cursor-pointer ${
+                      modalImageIdx === i ? "bg-[#ee4b56] scale-125" : "bg-[#201a18]/20 hover:bg-[#201a18]/50"
+                    }`}
                   />
                 ))}
               </div>
